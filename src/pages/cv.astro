@@ -1,0 +1,171 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import "../layouts/index.css";
+---
+
+<!DOCTYPE html>
+<html>
+<Header title="Mon CV | Sasha Darmon" />
+<body>
+<div class="content">
+    <Sidebar selectedItem="cv" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Retour</a>
+
+                <div class="fold-content">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                        <div>
+                            <h1>Sasha Darmon</h1>
+                            <p class="lead" style="color: #95ec38; font-weight: bold; margin-bottom: 5px;">
+                                Doctorant en Bio-Informatique & Médiation scientifique
+                            </p>
+                            <p style="color: #a8a8a8; max-width: 500px;">
+                                Laboratoire de Biométrie et Biologie Évolutive <br> INRIA de Lyon <br> Algorithmique, Graphes et Génétique.
+                            </p>
+                        </div>
+
+                        <!-- BOUTON TÉLÉCHARGER LE PDF -->
+                        <a href="/assets/CV_Sasha_Darmon.pdf" target="_blank" class="button w-button" style="display: flex; gap: 10px; align-items: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                            Télécharger en PDF
+                        </a>
+                    </div>
+
+                    <div class="cv-grid">
+
+
+                        <!-- COLONNE DROITE : LA TIMELINE ACADÉMIQUE -->
+                        <div class="cv-left">
+                            <h3 class="section-title" style="margin-bottom: 24px;">Parcours & Recherche</h3>
+
+                            <div class="timeline">
+
+                                <div class="timeline-item">
+                                    <div class="tl-dot"></div>
+                                    <div class="tl-date">2023 - Présent</div>
+                                    <div class="tl-title">Doctorat en Bio-Informatique</div>
+                                    <div class="tl-org">LBBE, Université de Lyon</div>
+                                    <div class="tl-desc">Algorithmique, Graphes et Génétique. Développement de nouvelles méthodes pour l'analyse de données biologiques.</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="tl-dot"></div>
+                                    <div class="tl-date">Oct 2022 - Fév 2023</div>
+                                    <div class="tl-title">Chercheur invité (Séjour PLR)</div>
+                                    <div class="tl-org">Penn State University, USA</div>
+                                    <div class="tl-desc">Développement d'un algorithme d'annotation des duplications dans de grands ensembles de génomes. Supervisé par Paul Medvedev.</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="tl-dot"></div>
+                                    <div class="tl-date">Mar 2022 - Août 2023</div>
+                                    <div class="tl-title">Stage de recherche</div>
+                                    <div class="tl-org">NII Tokyo, Japon</div>
+                                    <div class="tl-desc">Création d'un algorithme de clusterisation de séquences génétiques. Supervisé par Takeaki Uno.</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="tl-dot"></div>
+                                    <div class="tl-date">2019 - 2023</div>
+                                    <div class="tl-title">Diplôme de l'ENS de Lyon</div>
+                                    <div class="tl-org">ENS Lyon</div>
+                                    <div class="tl-desc">Formation pluridisciplinaire d'excellence : Master en Informatique fondamentale (Majeure) et Biologie (Mineure). Validation avec mention.</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- COLONNE GAUCHE : LES SUPERPOUVOIRS -->
+                        <div class="cv-right">
+
+                            <!-- ENSEIGNEMENT -->
+                            <div class="cv-section">
+                                <h3 class="section-title">Enseignement</h3>
+                                <div class="timeline-item small">
+                                    <div class="tl-date">2023 - 2025</div>
+                                    <div class="tl-title">Chargé de TD (UCBL)</div>
+                                    <div class="tl-desc">Maths pour la Biologie & Initiation Python.</div>
+                                </div>
+                                <div class="timeline-item small">
+                                    <div class="tl-date">2020 - 2022</div>
+                                    <div class="tl-title">Colleur en MP (Lycée du Parc)</div>
+                                    <div class="tl-desc">Interrogations orales en classes préparatoires.</div>
+                                </div>
+                            </div>
+
+                            <p style=" margin-bottom: 100px;">
+
+                            </p>
+
+                            <!-- COMPÉTENCES TECHNIQUES -->
+                            <div class="cv-section">
+                                <h3 class="section-title">Compétences Techniques</h3>
+                                <div class="tech-group">
+                                    <h4>Développement & Bio-Info</h4>
+                                    <div class="skills-tags">
+                                        <span>Rust</span>
+                                        <span>Python 3</span>
+                                        <span>C++</span>
+                                        <span>Bash</span>
+                                        <span>Awk</span>
+                                        <span>HTML</span>
+                                    </div>
+                                </div>
+                                <div class="tech-group">
+                                    <h4>Outils & Environnement</h4>
+                                    <div class="skills-tags">
+                                        <span>Git / GitHub</span>
+                                        <span>Serveurs SSH</span>
+                                        <span>LaTeX</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- LE BLOC ASSOCIATIF / GESTION MIS EN AVANT -->
+                <div class="highlight-box">
+                    <div class="title-with-icon">
+                        <span class="box-icon">💡</span>
+                        <h3>Ingénierie de Projets & Médiation</h3>
+                    </div>
+                    <p class="box-desc">
+                        Une dizaine d'expériences dans le pilotage d'événements de médiation scientifique :
+                        de la réponse aux appels à projets à la gestion budgétaire et logistique.
+                    </p>
+
+                    <ul class="impact-list">
+                        <li>
+                            <strong>Président & Trésorier — Association Démesures (5 ans)</strong><br/>
+                            Pilotage global : gestion budgétaire, management d'équipes bénévoles, formation de médiateurs,
+                            conception d'ateliers ludiques et coordination de stands pour la Fête de la Science ou la
+                            Japan Touch Haru.
+
+                        </li>
+                        <li>
+                            <strong>Membre Actif — BDE ENS de Lyon (2 ans)</strong><br/>
+                            Logistique et coordination de la vie associative : gestion de la communication et
+                            pilotage de l'intégration des nouvelles promotions au sein de l'école.
+                        </li>
+                    </ul>
+
+                    <div class="skills-tags" style="margin-top: 15px;">
+                        <span>Gestion de projet</span>
+                        <span>Pilotage d'équipe</span>
+                        <span>Gestion budgétaire</span>
+                        <span>Événementiel</span>
+                        <span>Inclusion</span>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

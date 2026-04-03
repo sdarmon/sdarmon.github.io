@@ -1,0 +1,824 @@
+<style is:global>
+    /* Conteneur de la grille */
+    /* --- MOSAÏQUE 2x2 --- */
+
+.mosaic-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Force 2 colonnes égales */
+    gap: 20px !important; /* L'espace exact entre les carrés */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.mosaic-card {
+    position: relative;
+    width: 100% !important;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box !important;
+    background-color: #2b2b2b;
+    border: 1px solid rgb(71 71 71);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: flex-end;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.mosaic-card:hover {
+    transform: translateY(-5px);
+    border-color: #95ec38;
+}
+
+.mosaic-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mosaic-card:hover .mosaic-img {
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+
+.mosaic-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%);
+    z-index: 1;
+}
+
+.mosaic-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    width: 100%;
+}
+
+.mosaic-content h3 {
+    color: #fff !important;
+    margin: 0 !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+}
+
+.mosaic-content p {
+    color: #a8a8a8 !important;
+    margin: 4px 0 0 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+}
+
+/* Sur téléphone : on passe sur 1 seule colonne */
+@media screen and (max-width: 479px) {
+    .mosaic-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.cta-title {
+    margin-top: 48px;    /* Un bel espace après la citation */
+    margin-bottom: 16px; /* Un petit espace avant les boutons */
+    color: #fff;
+    font-size: 1.4rem;   /* Plus petit que le H1, plus grand que le texte */
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+    /* Style de la citation */
+    /* Le bloc principal */
+.scientific-quote {
+    margin: 32px 0;
+    padding: 10px 20px;
+    border-left: 3px solid #95ec38;
+    background-color: rgba(255, 255, 255, 0.03); /* Un léger fond pour détacher la citation */
+    border-radius: 0 8px 8px 0;
+}
+
+/* Le texte de la citation */
+.scientific-quote p {
+    font-style: italic;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 12px; /* Espace avant l'auteur */
+    line-height: 1.6;
+}
+
+/* La source (auteur + livre) */
+.scientific-quote footer {
+    font-size: 0.9rem;
+    color: #a8a8a8; /* Gris comme ton texte secondaire */
+    text-align: right; /* Aligné à droite pour un look "bibliographie" */
+}
+
+/* Le nom de l'auteur */
+.scientific-quote .author {
+    font-weight: 500;
+    color: #fff; /* On fait ressortir un peu l'auteur */
+}
+
+/* Le titre du livre (obligatoirement en italique selon les conventions) */
+.scientific-quote cite {
+    font-style: italic;
+}
+
+/* Pour mettre les boutons côte à côte */
+.button-group {
+    display: flex;
+    position: center;
+    gap: 16px; /* Espace entre les boutons */
+    flex-wrap: wrap; /* Pour que ça passe à la ligne sur petit mobile */
+}
+
+/* Style spécifique du bouton LinkedIn pour le différencier un peu */
+.linkedin-btn {
+    display: flex;
+    align-items: center;
+    background-color: #0a66c2; /* Couleur officielle LinkedIn */
+    border-color: #0a66c2;
+}
+
+.linkedin-btn:hover {
+    background-color: #084d91;
+    border-color: #084d91;
+}
+
+.btn-icon {
+    width: 30px;              /* On l'agrandit un peu pour compenser le padding */
+    height: 30px;             /* On fixe la hauteur pour garder un cercle parfait */
+    margin-right: 10px;
+
+    /* La bordure */
+    border: 1.5px solid #ffffff;
+    border-radius: 20%;       /* Rend la bordure parfaitement circulaire */
+    padding: 0px;             /* Espace entre l'icône et le cercle blanc */
+
+    /* Pour s'assurer que l'image reste centrée dans le cercle */
+    object-fit: contain;
+}
+
+/* Responsive : sur mobile, on prend toute la largeur */
+@media screen and (max-width: 479px) {
+    .button-group .button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* --- CARROUSEL STYLES --- */
+.carousel-container {
+  position: relative;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Cache la scrollbar sur Firefox */
+    gap: 20px;
+    padding: 0 50px; /* Laisse l'espace pour voir les cartes suivantes/précédentes */
+    align-items: flex-start; /* Important pour l'expansion verticale */
+}
+.carousel-track::-webkit-scrollbar { display: none; } /* Cache la scrollbar sur Chrome/Safari */
+
+.carousel-slide {
+    min-width: 80%; /* La carte prend 80% de l'écran, laissant 20% pour l'aperçu */
+    max-width: 400px;
+    scroll-snap-align: center;
+    background-color: #1c1c1c;
+    border: 1px solid #353535;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; /* Indique que c'est cliquable */
+    opacity: 0.4; /* Sombre par défaut */
+    transform: scale(0.95); /* Légèrement réduit */
+    transition: all 0.4s ease;
+}
+
+/* QUAND LA CARTE EST AU CENTRE */
+.carousel-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: #95ec38;
+}
+/* --- LE DESIGN "FONDUE AU NOIR" --- */
+/* --- LE DESIGN "FONDUE AU NOIR" --- */
+
+.carousel-slide {
+    position: relative;
+    min-width: 80%;
+    max-width: 400px;
+    scroll-snap-align: center;
+    background-color: #1c1c1c;
+    border: 1px solid #353535;
+    border-radius: 16px;
+
+    display: block; /* Important : Retire le display: flex */
+    overflow: hidden;
+
+    cursor: pointer;
+    opacity: 0.4;
+    transform: scale(0.95);
+    transition: all 0.4s ease;
+    min-height: 420px;
+}
+
+/* QUAND LA CARTE EST AU CENTRE */
+.carousel-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: #95ec38;
+}
+
+/* L'IMAGE : Placée tout en haut, elle prend la largeur totale */
+.card-cover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 1;
+}
+
+/* LE DÉGRADÉ (La fondue au noir) */
+.card-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none; /* Laisse passer les clics */
+
+    /* Dégradé calculé en pixels pour correspondre exactement à l'image */
+    background: linear-gradient(
+            to bottom,
+            rgba(28, 28, 28, 0) 0px,
+            rgba(28, 28, 28, 0.9) 300px,
+            #1c1c1c 460px
+    );
+}
+
+/* LE CONTENEUR DU TEXTE */
+.card-content-wrapper {
+    position: relative;
+    z-index: 3; /* Passe PAR-DESSUS l'image et le dégradé */
+    width: 100%;
+
+    /* C'EST ICI QU'ON PLACE LE TEXTE SUR L'IMAGE */
+    margin-top: 65%;
+    padding-bottom: 35px;
+}
+
+/* INFO DE BASE */
+.card-basic {
+    padding: 0 24px;
+}
+.card-basic h3 { color: #fff; margin: 8px 0; font-size: 1.4rem; }
+.card-basic p { color: #a8a8a8; margin: 0; line-height: 1.4; }
+
+.expand-hint {
+    color: #95ec38;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* CONTENU ÉTENDU (Caché par défaut) */
+.expanded-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 24px;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.expanded-content p { color: #fff; line-height: 1.6; }
+
+/* QUAND ON CLIQUE POUR DÉPLIER */
+.carousel-slide.is-expanded .expanded-content {
+    max-height: 1000px;
+    padding: 0 24px 24px 24px;
+    opacity: 1;
+}
+.carousel-slide.is-expanded .expand-hint span {
+    transform: rotate(45deg); /* Le "+" devient une croix "x" */
+    transition: transform 0.3s;
+}
+
+/* VIDÉO */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-top: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+/* FLÈCHES ET POINTS DE NAVIGATION */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: #353535;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px; height: 40px;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.carousel-arrow:hover { background: #95ec38; }
+.left-arrow { left: 0px; }
+.right-arrow { right: 0px; }
+
+.carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+.nav-dot { width: 12px; height: 12px; border-radius: 50%; border: none; background-color: #353535; cursor: pointer; transition: 0.3s; }
+.nav-dot.active { background-color: #95ec38; }
+
+@media screen and (max-width: 768px) {
+    .carousel-arrow { display: none; }
+    .carousel-slide { min-width: 85%; }
+}
+
+
+
+.workshop-section {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+/* Inverse l'ordre pour l'effet Z */
+.workshop-section.reverse {
+    flex-direction: row-reverse;
+}
+
+.workshop-text {
+    flex: 1;
+}
+
+.workshop-badge {
+    color: #95ec38;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+}
+
+.workshop-section h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.workshop-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #a8a8a8;
+    margin-bottom: 24px;
+}
+
+/* Les petits tags de concepts */
+.workshop-concepts {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.workshop-concepts span {
+    background: rgba(149, 236, 56, 0.1);
+    color: #95ec38;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(149, 236, 56, 0.2);
+}
+
+/* GRILLE D'IMAGES TRYPTIQUE */
+.workshop-gallery {
+    flex: 1.2;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 160px);
+    gap: 12px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #353535;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.02);
+    border-color: #95ec38;
+}
+
+.img-large {
+    grid-row: span 2; /* L'image principale prend toute la hauteur */
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 991px) {
+    .workshop-section, .workshop-section.reverse {
+        flex-direction: column;
+        gap: 32px;
+        margin-top: 60px;
+    }
+    .workshop-gallery {
+        width: 100%;
+    }
+    .gallery-grid {
+        grid-template-rows: repeat(2, 200px);
+    }
+}
+/* Style de la Lightbox (cachée par défaut) */
+.lightbox {
+    display: none; /* Caché */
+    position: fixed;
+    z-index: 2000; /* Au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fond noir transparent */
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+/* L'image à l'intérieur */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* Quand la lightbox est ouverte, on peut animer l'image */
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+/* Le bouton de fermeture (la croix) */
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* On change le curseur sur les images de la galerie pour montrer qu'elles sont cliquables */
+.gallery-grid img {
+    width: 100%;
+    height: 100%;
+    /* 1. EMPECHE LA DEFORMATION */
+    object-fit: cover;
+
+    /* 2. CENTRE L'IMAGE DANS LA CASE */
+    object-position: center;
+
+    border-radius: 12px;
+    border: 1px solid #353535;
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+
+.ia-quiz-container {
+    max-width: 450px;
+    margin: 10px auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    width: 70%;
+    border-radius: 10px;
+    border: 1px solid #353535;
+    margin-top: 10px;
+}
+
+.quiz-instruction {
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+.ia-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;                 /* Espace entre les deux photos */
+    max-width: 400px;          /* Optionnel : évite que les photos soient trop géantes sur grand écran */
+    margin: 0 auto;            /* Centre la grille horizontalement */
+}
+
+.ia-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.ia-item:hover {
+    transform: scale(1.02); /* Petit zoom très léger au survol */
+}
+.ia-item img {
+    width: 100%;
+    height: auto;              /* Laisse l'image garder ses proportions naturelles */
+    max-height: 200px;         /* Limite la hauteur pour ne pas trop scroller */
+    object-fit: cover;         /* Recadre proprement si l'image est trop grande */
+    border-radius: 12px;
+}
+
+
+
+.cat-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Style quand la solution est révélée */
+.ia-item.revealed-real {
+    border-color: #95ec38;
+    box-shadow: 0 0 15px rgba(149, 236, 56, 0.4);
+}
+
+/* Bouton et texte de solution */
+.solution-wrapper {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.solution-btn {
+    background: transparent;
+    border: 1px solid #95ec38;
+    color: #95ec38;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.solution-btn:hover {
+    background: #95ec38;
+    color: #161616;
+}
+
+.solution-text {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    margin-top: 15px;
+    color: #a8a8a8;
+    font-size: 0.9rem;
+}
+
+.solution-text.show {
+    max-height: 100px;
+    opacity: 1;
+}
+
+
+
+/* GRILLE PRINCIPALE */
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; /* Colonne droite légèrement plus large */
+    gap: 60px;
+    margin-top: 40px;
+}
+
+/* TYPOGRAPHIE DES SECTIONS */
+.section-title {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #353535;
+}
+
+/* LE BLOC ASSOCIATIF MIS EN AVANT */
+.highlight-box {
+    background: linear-gradient(145deg, rgba(149, 236, 56, 0.1) 0%, rgba(28, 28, 28, 0) 100%);
+    border: 1px solid rgba(149, 236, 56, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.box-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.highlight-box h3 {
+    color: #95ec38;
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+}
+
+.box-desc {
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.impact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #a8a8a8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.impact-list li {
+    margin-bottom: 16px;
+    padding-left: 16px;
+    position: relative;
+}
+
+.impact-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #95ec38;
+}
+
+.impact-list strong {
+    color: #fff;
+}
+
+/* LABELS / TAGS COMPÉTENCES */
+.tech-group {
+    margin-bottom: 24px;
+}
+
+.tech-group h4 {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0 0 10px 0;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skills-tags span {
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    border: 1px solid #353535;
+}
+
+/* LA LIGNE DU TEMPS (TIMELINE) */
+.timeline {
+    position: relative;
+    padding-left: 24px;
+    border-left: 2px solid #353535;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.tl-dot {
+    position: absolute;
+    left: -31px; /* Centrer le point sur la ligne */
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    background-color: #1c1c1c;
+    border: 2px solid #95ec38;
+    border-radius: 50%;
+}
+
+.tl-date {
+    color: #95ec38;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.tl-title {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.tl-org {
+    color: #fff;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.tl-desc {
+    color: #a8a8a8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Timeline version petite (pour l'enseignement) */
+.timeline-item.small {
+    margin-bottom: 24px;
+}
+.timeline-item.small .tl-title {
+    font-size: 1.1rem;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 991px) {
+    .cv-grid {
+        grid-template-columns: 1fr; /* Passe sur 1 seule colonne */
+        gap: 40px;
+    }
+
+    /* On inverse l'ordre sur mobile si on veut que l'académique apparaisse avant ou après */
+    .cv-left { order: 2; }
+    .cv-right { order: 1; }
+}
+.title-with-icon {
+    display: flex;
+    align-items: center; /* Aligne verticalement l'ampoule et le texte */
+    gap: 12px;           /* Espace entre le texte et l'ampoule */
+    margin-bottom: 10px;
+}
+
+.title-with-icon h3 {
+    margin: 0; /* On retire la marge par défaut pour que le flex gère l'alignement */
+}
+
+.box-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0; /* On annule l'ancienne marge du bas si elle existe */
+}
+
+</style>

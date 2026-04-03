@@ -1,0 +1,169 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { Image } from 'astro:assets';
+import "../layouts/index.css";
+
+// Importe tes images ici (Exemple pour le premier atelier)
+---
+
+<!DOCTYPE html>
+<html>
+<Header title="Ateliers Médiations | Sasha Darmon" />
+<body>
+<div class="content">
+    <Sidebar selectedItem="ateliers" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Retour</a>
+
+                <div class="fold-content">
+                    <h1>Ateliers de Médiation</h1>
+                    <p class="lead" style="margin-bottom: 15px;">
+                       Grâce à l'association <i><b>Démesures</b></i>, j'ai eu l'opportunité de concevoir et d'animer une série
+                        d'ateliers ludiques pour sensibiliser le public aux biais cognitifs et pour développer leur
+                        esprit critique. Ces ateliers, mêlant jeux, quiz visuels et débats, ont été conçus pour
+                        être facilement pris en main et installé pour n'importe quel public. Le but premier est de permettre
+                        à tout le monde de pouvoir se questionner, chercher, et appréhender la science sans jugement!
+                    </p>
+
+                    <p class="lead">
+                        Ces ateliers sont généralement présentés lors des éditions de la <i>Fête de la Science</i> ou
+                        de conventions culturelles (comme la <i>Japan Touch/Geek Touch</i>) et la formation de prise en
+                        main se fait en moins d'une heure. Des ressources supplémentaires sont également disponibles
+                        pour faciliter leur réutilisation et leur compréhension.
+                    </p>
+
+
+                    <!-- ATELIER 1 : ESCAPE GAME -->
+                    <section class="workshop-section">
+                        <div class="workshop-text">
+                            <div class="workshop-badge">Escape Game</div>
+                            <h2>Infiltration du Laboratoire</h2>
+                            <p>Les élèves incarnent des <i>reviewers</i> infiltrés.
+                                Leur mission : vérifier la validité des preuves de la découverte de l'Almasty avant
+                                sa publication. Pour démêler le vrai du faux, il faudra faire des analyses microscopiques,
+                                génétiques, informatiques.
+                            </p>
+                            <div class="workshop-concepts">
+                                <span>Esprit critique</span>
+                                <span>Cryptozoologie</span>
+                                <span>Preuve scientifique</span>
+                                <span>Recherche</span>
+                                <span>Expérimentation</span>
+                            </div>
+                        </div>
+                        <div class="workshop-gallery">
+                            <div class="gallery-grid">
+                                <div class="img-small"><img src="/photo/LBBE escape game.jpg" alt="Escape game 2" /></div>
+                                <div class="img-large"><img src="/photo/brochure.png" alt="Escape game 1" /></div>
+                                <div class="img-small"><img src="/photo/LBBE escape game2.jpg" alt="Escape game 3" /></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ATELIER 2 : IMAGES MYSTÈRES -->
+                    <section class="workshop-section reverse">
+                        <div class="workshop-text">
+                            <div class="workshop-badge">Quiz Visuel</div>
+                            <h2>Images Mystères</h2>
+                            <p>
+                                Les noms, légendes et explications des images scientifiques ont été perdus! À vous de
+                                de les retrouver. Il vous faudra être attentif⋅ve pour trouver la taille des photos et
+                            ce qu'elles représentent.</p>
+                            <div class="workshop-concepts">
+                                <span>Biais cognitifs</span>
+                                <span>Techniques d'image</span>
+                                <span>Contextualisation</span>
+                                <span>Échelles</span>
+                                <span>Légendes</span>
+                            </div>
+                        </div>
+                        <div class="workshop-gallery">
+                            <div class="gallery-grid">
+                                <div class="img-large"><img src="/photo/Don-Komarechka-meteorite-slice2.jpg" alt="Mystère 1" /></div>
+                                <div class="img-small"><img src="/photo/LBBE images mystères.jpg" alt="Mystère 2" /></div>
+                                <div class="img-small"><img src="/photo/LBBE images mystères2.jpg" alt="Mystère 3" /></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ATELIER 3 : IA VS RÉEL -->
+                    <section class="workshop-section">
+                        <div class="workshop-text">
+                            <div class="workshop-badge">Débat & IA</div>
+                            <h2>Réel ou Artificiel ?</h2>
+                            <p>Dix thèmes, deux images par thème : l'une est vraie, l'autre générée par IA.
+                                Saurez-vous faire la différence ? </p>
+                            <div class="workshop-concepts">
+                                <span>IA Générative</span>
+                                <span>Esprit critique</span>
+                                <span>Débat</span>
+                            </div>
+                        </div>
+                        <div class="workshop-gallery">
+                            <div class="gallery-grid">
+                                <div class="img-large"><img src="/photo/IAouPAS.jpg" alt="IA 1" /></div>
+                                <div class="img-small"><img src="/photo/LBBE IA ou reelle2.jpg" alt="IA 2" /></div>
+                                <div class="img-small"><img src="/photo/LBBE IA ou reelle.jpg" alt="IA 3" /></div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="ia-quiz-container">
+                        <p class="quiz-instruction">Mini-quiz : Quel chat est réel?</p>
+
+                        <div class="ia-grid">
+                            <!-- 1. La vraie Hécate (En haut) -->
+                            <div class="ia-item real-cat">
+                                <img src="/photo/chat.png" alt="Chat 1" />
+                                <div class="cat-label">Chat n°1</div>
+                            </div>
+
+                            <!-- 2. Chat IA (En bas) -->
+                            <div class="ia-item">
+                                <img src="/photo/IA.png" alt="Chat 2" />
+                                <div class="cat-label">Chat n°2</div>
+                            </div>
+                        </div>
+
+                        <!-- Le bouton de solution -->
+                        <div class="solution-wrapper">
+                            <button id="reveal-btn" class="solution-btn">Voir la solution</button>
+                            <p id="solution-text" class="solution-text">
+                                Le <strong>Chat n°1</strong> est réel ! Il s'agit d'<strong>Hécate</strong>, mon chat 🐈‍⬛ <br>L'autre image a été générée par DALL-E 3.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </nav>
+</div>
+
+
+<!-- Le calque noir qui contiendra l'image agrandie -->
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Agrandissement" />
+</div>
+
+</body>
+</html>
+
+<script>
+    import { initLightbox } from '../scripts/atelier.js';
+
+    // On initialise la lightbox à chaque fois que la page est chargée
+    document.addEventListener('astro:page-load', () => {
+        initLightbox();
+    });
+
+    import { initQuizIA } from '../scripts/atelier.js';
+
+    // On initialise la lightbox à chaque fois que la page est chargée
+    document.addEventListener('astro:page-load', () => {
+        initQuizIA();
+    });
+</script>

@@ -4,22 +4,28 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+// Import de la police (400 = texte normal, 700 = texte en gras)
+// C'est mieux d'importer les deux si tu utilises du gras sur ton site !
+import '@fontsource/exo-2/400.css';
+import '@fontsource/exo-2/700.css';
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Astro description" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" type="image/jpg+xml" href="/favicon.svg" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
+</head>
+<body>
+<slot />
+</body>
 </html>
+
 <style is:global>
 	:root {
 		--accent: 136, 58, 234;
@@ -32,11 +38,23 @@ const { title } = Astro.props;
 			white 60%
 		);
 	}
+
+	/* 1. On applique Exo 2 à la racine absolue du site */
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: 'Exo 2', sans-serif;
 		background: #13151a;
 		background-size: 224px;
 	}
+
+	/* 2. On s'assure que le body hérite bien (par sécurité) */
+	body {
+		margin: 0; /* Toujours bien de reset la marge par défaut */
+	}
+
+	/* 💡 CONSEIL POUR TON PROFIL BIO-INFO / DEVOPS :
+	   Généralement, on ne met pas la police principale dans la balise <code>.
+	   On garde une police "monospace" pour que le code ressemble à du code !
+	   J'ai remis les polices de code standards ici : */
 	code {
 		font-family:
 			Menlo,

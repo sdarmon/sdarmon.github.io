@@ -1,0 +1,132 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import "../layouts/index.css";
+---
+
+<!DOCTYPE html>
+<html>
+<Header title="Contact | Sasha Darmon" />
+<body>
+<div class="content">
+    <!-- On peut laisser selectedItem vide si tu n'as pas de bouton Contact dans ta sidebar -->
+    <Sidebar selectedItem="contact" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Retour</a>
+
+                <div class="fold-content">
+                    <h1>Travaillons ensemble</h1>
+                    <p class="lead" style="margin-bottom: 40px;">
+                        Un projet d'atelier de médiation, une conférence, ou une collaboration scientifique ?
+                        N'hésitez pas à m'écrire via le formulaire ci-dessous ou directement sur mes réseaux.
+                    </p>
+
+                    <!-- Les boutons de contact rapides (Mail & LinkedIn) -->
+                    <div class="button-group" style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 60px;">
+                        <a href="https://www.linkedin.com/in/sashadarmon/" target="_blank" class="button w-button linkedin-btn">
+                            <img src="/assets/LinkedIn_icon.svg" alt="" class="btn-icon" />
+                            LinkedIn
+                        </a>
+                        <a href="mailto:sasha.darmon@gmail.com" class="button w-button">E-mail</a>
+                    </div>
+
+                    <!-- Le Formulaire de contact -->
+                    <div class="mini-label-white gray-color" style="margin-bottom: 24px; font-size: 14px; letter-spacing: 1.5px;">
+                        Ou laissez-moi un message
+                    </div>
+
+                    <!-- REMPLACE L'URL "YOUR_FORMSPREE_ENDPOINT" par celle que Formspree te donnera -->
+                    <form action="https://formspree.io/f/mwvwnnnp" method="POST" class="contact-form">
+
+                        <div class="form-group">
+                            <label for="name">Votre nom / Institution</label>
+                            <input type="text" id="name" name="name" required placeholder="Ex: Laboratoire de ..." />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Votre adresse email</label>
+                            <input type="email" id="email" name="_replyto" required placeholder="exemple@domaine.com" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Votre message</label>
+                            <textarea id="message" name="message" required rows="5" placeholder="Bonjour Sasha,nous aimerions organiser un atelier..."></textarea>
+                        </div>
+
+                        <!-- Ce champ caché empêche les robots de spammer ton formulaire -->
+                        <input type="text" name="_gotcha" style="display:none" />
+
+                        <button type="submit" class="button w-button submit-btn">Envoyer le message</button>
+                    </form>
+
+                </div>
+
+            </main>
+        </div>
+    </nav>
+</div>
+
+<!-- Le style spécifique pour le formulaire -->
+<style>
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 500px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    label {
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    input, textarea {
+        background-color: #1c1c1c;
+        border: 1px solid #353535;
+        border-radius: 8px;
+        padding: 14px 16px;
+        color: #fff;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Effet quand on clique dans le champ */
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: #68aa24;
+        box-shadow: 0 0 0 2px rgb(149 236 56);
+    }
+
+    /* Style pour le texte temporaire (placeholder) */
+    input::placeholder, textarea::placeholder {
+        color: #666;
+    }
+
+    /* Le bouton d'envoi du formulaire */
+    .submit-btn {
+        margin-top: 8px;
+        background-color: #68aa24; /* Bleu médiation pour inciter au clic */
+        border-color: #4a7519;
+        font-weight: bold;
+        width: 100%; /* Prend toute la largeur du formulaire */
+        text-align: center;
+    }
+
+    .submit-btn:hover {
+        background-color: #4a7519;
+        border-color: #4a7519;
+    }
+</style>
+</body>
+</html>

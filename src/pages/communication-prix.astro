@@ -1,0 +1,153 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import "../layouts/index.css";
+---
+
+<!DOCTYPE html>
+<html>
+<Header title="Communication & Prix | Sasha Darmon" />
+<body>
+<div class="content">
+    <Sidebar selectedItem="communication" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Retour</a>
+
+                <div class="fold-content">
+                    <h1>Communication & Prix</h1>
+                    <p class="lead">
+                        Transmettre la passion de la recherche passe aussi par la scène et l'écriture. J'explore différents formats pour raconter la science autrement.
+                    </p>
+
+                    <!-- LE CARROUSEL -->
+                    <div class="carousel-container">
+
+                        <!-- Flèche Gauche -->
+                        <button class="carousel-arrow left-arrow" aria-label="Précédent">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+                        </button>
+
+                        <div class="carousel-track">
+
+                            <!-- SLIDE 1 : BD MISSION Z -->
+                            <div class="carousel-slide" id="slide-bd">
+                                <img src="./src/assets/A_illustration_sciencesenbulles_0.jpg" alt="BD Mission Z" class="card-cover-image" />
+
+                                <!-- 2. Le dégradé fondu (qui assombrit le bas) -->
+                                <div class="card-gradient"></div>
+
+                                <!-- 3. Le conteneur du texte (qui passe PAR-DESSUS le dégradé) -->
+                                <div class="card-content-wrapper">
+                                    <div class="card-basic">
+                                        <div class="mini-label-white gray-color">Projet BD</div>
+                                        <h3>Mission Z. À la poursuite de l'intelligence</h3>
+                                        <p>Une plongée au cœur de l'IA et des neurosciences.</p>
+                                        <div class="expand-hint">Cliquez pour en savoir plus <span>+</span></div>
+                                    </div>
+
+                                    <div class="expanded-content">
+                                        <p>J'ai co-conçu ce scénario pour rendre ces enjeux accessibles à tous à travers une enquête palpitante.</p>
+                                        <a href="/assets/mission-z-extrait.pdf" target="_blank" class="button w-button">Lire la BD (PDF)</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 2 : MT180 -->
+                            <div class="carousel-slide" id="slide-mt180">
+                                <!-- Mets une image miniature de la vidéo ici -->
+                                <img src="./src/assets/Bartok_Vincent Noclin.jpg" alt="Prix MT180" class="card-cover-image" />
+
+                                <div class="card-gradient"></div>
+
+                                <div class="card-content-wrapper">
+                                    <div class="card-basic">
+                                        <div class="mini-label-white gray-color">1er Prix Jury</div>
+                                        <h3>Ma Thèse en 180 Secondes</h3>
+                                        <p>La finale locale à Lyon : 3 minutes pour convaincre.</p>
+                                        <div class="expand-hint">Cliquez pour voir la vidéo <span>+</span></div>
+                                    </div>
+
+                                    <div class="expanded-content">
+                                        <p>Expliquer des années de recherche en bio-informatique en 3 minutes est un véritable défi de synthèse et de mise en scène.</p>
+                                        <div class="video-wrapper">
+                                            <iframe width="1050" height="590" src="https://www.youtube.com/embed/HU55znbeZxM" title="Ma thèse en 180 secondes 2026 | Sasha Darmon - 1er prix du jury" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 3 : DÉCRYP'THÈSE -->
+                            <div class="carousel-slide" id="slide-decrypthese">
+                                <img src="./src/assets/Du maïs dans mon génome!.jpg" alt="Prix Décryp'thèse" class="card-cover-image" />
+
+                                <div class="card-gradient"></div>
+
+                                <div class="card-content-wrapper">
+                                    <div class="card-basic">
+                                        <div class="mini-label-white gray-color">Prix du Public</div>
+                                        <h3>Concours Décryp'thèse</h3>
+                                        <p>Récompense pour la qualité de la vulgarisation.</p>
+                                        <div class="expand-hint">Cliquez pour en savoir plus <span>+</span></div>
+                                    </div>
+
+                                    <div class="expanded-content">
+                                        <p>Ce concours national met en avant l'originalité de l'approche pédagogique. J'y ai présenté mes travaux sous un angle inattendu qui a su convaincre le public.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 4 : Annonay -->
+                            <div class="carousel-slide" id="slide-annonay">
+                                <!-- Mets une image miniature de la vidéo ici -->
+                                <img src="./src/assets/annonay.jpeg" alt="Annonay" class="card-cover-image" />
+
+                                <div class="card-gradient"></div>
+
+                                <div class="card-content-wrapper">
+                                    <div class="card-basic">
+                                        <div class="mini-label-white gray-color">Fête de la science</div>
+                                        <h3>Rencontre entre doctorant⋅es et lycéen⋅nes</h3>
+                                        <p>Blablabla Annonay.</p>
+                                        <div class="expand-hint">Cliquez pour en savoir plus  <span>+</span></div>
+                                    </div>
+
+                                    <div class="expanded-content">
+                                        <p>
+                                            Blablabla
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flèche Droite -->
+                        <button class="carousel-arrow right-arrow" aria-label="Suivant">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+                        </button>
+
+                        <!-- NAVIGATION DOTS -->
+                        <div class="carousel-nav">
+                            <button class="nav-dot active" data-slide="0"></button>
+                            <button class="nav-dot" data-slide="1"></button>
+                            <button class="nav-dot" data-slide="2"></button>
+                            <button class="nav-dot" data-slide="3"></button>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </nav>
+</div>
+
+<script>
+    import { initCarousel } from '../scripts/carousel.js';
+    document.addEventListener('astro:page-load', () => {
+        initCarousel();
+    });
+</script>
+</body>
+</html>

@@ -1,113 +1,149 @@
 ---
 const { selectedItem } = Astro.props;
+
+import { Image } from 'astro:assets';
+
+// 2. On importe les vrais fichiers images depuis src/assets/
+import profilImg from '../assets/profil.JPG';
 ---
 
 <aside
-  data-animation="default"
-  data-collapse="medium"
-  data-duration="400"
-  data-easing="ease"
-  data-easing2="ease"
-  role="banner"
-  class="sidebar w-nav"
+    data-animation="default"
+    data-collapse="medium"
+    data-duration="400"
+    data-easing="ease"
+    data-easing2="ease"
+    role="banner"
+    class="sidebar w-nav"
 >
   <div class="nav-content">
     <a href="/" class="w-nav-brand" aria-label="home">
       <div class="niv-data">
-        <img
-          src="/assets/sam.jpg"
-          loading="eager"
-          alt="Profile picture"
-          class="niv-image"
-        />
+        <Image src={profilImg} alt="Sasha Darmon" class="niv-image" />
         <div>
-          <div class="label-white">Sam Bernstein</div>
-          <div class="label-gray">Software Engineer</div>
+          <div class="label-white"><b>Sasha Darmon</b></div>
+          <div class="label-gray"><b>Doctorant</b></div>
         </div>
       </div>
     </a>
 
     <nav role="navigation" class="w-nav-menu">
+      <!-- 1. Accueil -->
       <a
-        href="/"
-        class={`nav-link-container w-inline-block ${
-          selectedItem === 'home' ? 'w--current' : ''
-        }`}
+          href="/"
+          class={`nav-link-container w-inline-block ${
+              selectedItem === 'home' ? 'w--current' : ''
+          }`}
       >
         <img
-          src="/assets/home.svg"
-          loading="eager"
-          alt=""
-          class="nav-link-image"
+            src="/assets/home.svg"
+            loading="eager"
+            alt=""
+            class="nav-link-image"
         />
-        <div>Home</div>
+        <div>Accueil</div>
       </a>
+
+      <!-- 2. Ateliers Médiations -->
       <a
-        href="/software-development"
-        class={`nav-link-container w-inline-block ${
-          selectedItem === 'software-development' ? 'w--current' : ''
-        }`}
-        aria-current={
-          selectedItem === 'software-development' ? 'page' : undefined
-        }
+          href="/ateliers"
+          class={`nav-link-container w-inline-block ${
+              selectedItem === 'ateliers' ? 'w--current' : ''
+          }`}
       >
         <img
-          src="/assets/code.svg"
-          loading="eager"
-          alt=""
-          class="nav-link-image"
+            src="/assets/puzzle.svg"
+            loading="eager"
+            alt=""
+            class="nav-link-image"
         />
-        <div>Software development</div>
+        <div>Ateliers de médiation</div>
       </a>
+
+      <!-- 3. Communication & Prix -->
       <a
-        href="/devops"
-        class={`nav-link-container w-inline-block ${
-          selectedItem === 'devops' ? 'w--current' : ''
-        }`}
+          href="/communication-prix"
+          class={`nav-link-container w-inline-block ${
+              selectedItem === 'communication' ? 'w--current' : ''
+          }`}
       >
         <img
-          src="/assets/dns.svg"
-          loading="eager"
-          alt=""
-          class="nav-link-image"
+            src="/assets/trophy.svg"
+            loading="eager"
+            alt=""
+            class="nav-link-image"
         />
-        <div>DevOps</div>
+        <div>Communication & prix</div>
       </a>
+
+      <!-- 4. Publications -->
       <a
-        href="/personal-projects"
-        class={`nav-link-container w-inline-block ${
-          selectedItem === 'personal-projects' ? 'w--current' : ''
-        }`}
+          href="/publications"
+          class={`nav-link-container w-inline-block ${
+              selectedItem === 'publications' ? 'w--current' : ''
+          }`}
       >
         <img
-          src="/assets/favorite.svg"
-          loading="eager"
-          alt=""
-          class="nav-link-image"
+            src="/assets/code.svg"
+            loading="eager"
+            alt=""
+            class="nav-link-image"
         />
-        <div>Personal projects</div>
+        <div>Publications</div>
+      </a>
+
+      <!-- 5. CV -->
+      <a
+          href="/cv"
+          class={`nav-link-container w-inline-block ${
+              selectedItem === 'cv' ? 'w--current' : ''
+          }`}
+      >
+        <img
+            src="/assets/cv.svg"
+            loading="eager"
+            alt=""
+            class="nav-link-image"
+        />
+        <div>Mon CV</div>
+      </a>
+
+      <!-- 6. Contact -->
+      <a
+          href="/contact"
+          class={`nav-link-container w-inline-block ${
+              selectedItem === 'contact' ? 'w--current' : ''
+          }`}
+      >
+        <img
+            src="/assets/chat.svg"
+            loading="eager"
+            alt=""
+            class="nav-link-image"
+        />
+        <div>Contact</div>
       </a>
     </nav>
 
     <div
-      class="navbar-icon-button w-nav-button"
-      style="-webkit-user-select: text;"
-      aria-label="menu"
-      role="button"
-      tabindex="0"
+        class="navbar-icon-button w-nav-button"
+        style="-webkit-user-select: text;"
+        aria-label="menu"
+        role="button"
+        tabindex="0"
     >
       <img
-        src="/assets/menu.svg"
-        loading="eager"
-        alt=""
-        class="navbar-icon"
+          src="/assets/menu.svg"
+          loading="eager"
+          alt=""
+          class="navbar-icon"
       />
     </div>
   </div>
 
   <script>
     import { setupNav } from '../scripts/nav.js';
-    
+
     let cleanup;
     document.addEventListener('astro:page-load', () => {
       if (cleanup) cleanup();
