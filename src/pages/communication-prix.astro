@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
 import "../layouts/index.css";
 ---
 
@@ -42,6 +43,7 @@ import "../layouts/index.css";
                                 <!-- 3. Le conteneur du texte (qui passe PAR-DESSUS le dégradé) -->
                                 <div class="card-content-wrapper">
                                     <div class="card-basic">
+                                        <div class="photo-credit-vertical">©  Ollivier Pourriol & Nathanaël Mikles</div>
                                         <div class="mini-label-white gray-color">Projet BD</div>
                                         <h3>Mission Z. À la poursuite de l'intelligence</h3>
                                         <p>Partez en mission, à la recherche des <i>Intelligence(s)</i> qu’elles soient
@@ -73,13 +75,13 @@ import "../layouts/index.css";
 
                             <!-- SLIDE 2 : MT180 -->
                             <div class="carousel-slide" id="slide-mt180">
-                                <!-- Mets une image miniature de la vidéo ici -->
-                                <img src="/photo/Bartok_Vincent_Noclin.jpg" alt="Prix MT180" class="card-cover-image" />
+
+                                <img src="/photo/Bartok_Vincent_Noclin.jpg" alt="Prix MT180"  class="card-cover-image"/>
 
                                 <div class="card-gradient"></div>
-
                                 <div class="card-content-wrapper">
                                     <div class="card-basic">
+                                        <div class="photo-credit-vertical">© Vincent Noclin</div>
                                         <div class="mini-label-white gray-color">1er Prix Jury</div>
                                         <h3>Ma Thèse en 180 Secondes</h3>
                                         <p>La finale locale à Lyon : 3 minutes pour convaincre.</p>
@@ -189,6 +191,7 @@ import "../layouts/index.css";
 
                 </div>
             </main>
+            <Footer />
         </div>
     </nav>
 </div>

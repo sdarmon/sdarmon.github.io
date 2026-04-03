@@ -1,0 +1,29 @@
+---
+// src/components/Footer.astro
+---
+<footer class="site-footer">
+    <div class="footer-line"></div>
+    <p>© {new Date().getFullYear()} Sasha Darmon. Sauf mention contraire, les images de ce site sont ma propriété.</p>
+</footer>
+
+<style>
+    .site-footer {
+        display: block;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        text-align: center;
+        width: 100%;
+    }
+    .footer-line {
+        width: 50px;
+        height: 1px;
+        background-color: #353535;
+        margin: 0 auto 10px;
+    }
+    .site-footer p {
+        font-size: 11px;
+        color: #888;
+        font-family: 'Exo 2', sans-serif;
+        letter-spacing: 0.5px;
+    }
+</style>

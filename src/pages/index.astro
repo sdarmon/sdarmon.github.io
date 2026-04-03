@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
 
 import "../layouts/index.css";
 
@@ -57,6 +58,7 @@ import cvImg from '../assets/adn.jpg';
                 <a href="/communication-prix" class="mosaic-card" style="display: flex !important; width: 100% !important;">
                   <div class="mosaic-overlay"></div>
                   <Image src={prixImg} alt="Ateliers médiations" class="mosaic-img" />
+                  <div class="photo-credit-vertical-index">© Vincent Noclin</div>
                   <div class="mosaic-content">
                     <h3>Communication & prix</h3>
                     <p>MT180, BD, Fête de la Science</p>
@@ -75,6 +77,7 @@ import cvImg from '../assets/adn.jpg';
                 <a href="/cv" class="mosaic-card" style="display: flex !important; width: 100% !important;">
                   <div class="mosaic-overlay"></div>
                   <Image src={cvImg} alt="Ateliers médiations" class="mosaic-img" />
+                  <div class="photo-credit-vertical-index">© Unsplash/CC0 Public Domain</div>
                   <div class="mosaic-content">
                     <h3>Mon CV</h3>
                     <p>Parcours & compétences</p>
@@ -106,8 +109,10 @@ import cvImg from '../assets/adn.jpg';
             </div>
 
           </main>
+          <Footer />
         </div>
       </nav>
+
     </div>
 
 

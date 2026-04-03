@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
 import { Image } from 'astro:assets';
 import "../layouts/index.css";
 
@@ -57,9 +58,9 @@ import "../layouts/index.css";
                         </div>
                         <div class="workshop-gallery">
                             <div class="gallery-grid">
-                                <div class="img-small"><img src="/photo/LBBE escape game.jpg" alt="Escape game 2" /></div>
-                                <div class="img-large"><img src="/photo/brochure.png" alt="Escape game 1" /></div>
-                                <div class="img-small"><img src="/photo/LBBE escape game2.jpg" alt="Escape game 3" /></div>
+                                <div class="img-small"><img src="/photo/LBBE escape game.jpg" alt="Escape game 2" data-credit="Gaspard Dussert" /></div>
+                                <div class="img-large"><img src="/photo/brochure.png" alt="Escape game 1" data-credit="Démesures"  /></div>
+                                <div class="img-small"><img src="/photo/LBBE escape game2.jpg" alt="Escape game 3" data-credit="Gaspard Dussert" /></div>
                             </div>
                         </div>
                     </section>
@@ -83,9 +84,9 @@ import "../layouts/index.css";
                         </div>
                         <div class="workshop-gallery">
                             <div class="gallery-grid">
-                                <div class="img-large"><img src="/photo/Don-Komarechka-meteorite-slice2.jpg" alt="Mystère 1" /></div>
-                                <div class="img-small"><img src="/photo/LBBE images mystères.jpg" alt="Mystère 2" /></div>
-                                <div class="img-small"><img src="/photo/LBBE images mystères2.jpg" alt="Mystère 3" /></div>
+                                <div class="img-large"><img src="/photo/Don-Komarechka-meteorite-slice2.jpg" alt="Mystère 1" data-credit="Don Komarechka Photography, Ravna Gora, Varna, Canada"/></div>
+                                <div class="img-small"><img src="/photo/LBBE images mystères.jpg" alt="Mystère 2" data-credit="Gaspard Dussert"  /></div>
+                                <div class="img-small"><img src="/photo/LBBE images mystères2.jpg" alt="Mystère 3" data-credit="Gaspard Dussert" /></div>
                             </div>
                         </div>
                     </section>
@@ -106,8 +107,8 @@ import "../layouts/index.css";
                         <div class="workshop-gallery">
                             <div class="gallery-grid">
                                 <div class="img-large"><img src="/photo/IAouPAS.jpg" alt="IA 1" /></div>
-                                <div class="img-small"><img src="/photo/LBBE IA ou reelle2.jpg" alt="IA 2" /></div>
-                                <div class="img-small"><img src="/photo/LBBE IA ou reelle.jpg" alt="IA 3" /></div>
+                                <div class="img-small"><img src="/photo/LBBE IA ou reelle2.jpg" alt="IA 2" data-credit="Gaspard Dussert" /></div>
+                                <div class="img-small"><img src="/photo/LBBE IA ou reelle.jpg" alt="IA 3" data-credit="Gaspard Dussert" /></div>
                             </div>
                         </div>
                     </section>
@@ -138,6 +139,7 @@ import "../layouts/index.css";
                     </div>
                 </div>
             </main>
+            <Footer />
         </div>
     </nav>
 </div>
@@ -146,7 +148,12 @@ import "../layouts/index.css";
 <!-- Le calque noir qui contiendra l'image agrandie -->
 <div id="lightbox" class="lightbox">
     <span class="close-lightbox">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" src="" alt="Agrandissement" />
+
+    <!-- Nouveau conteneur pour l'image et sa légende -->
+    <div class="lightbox-container">
+        <img class="lightbox-content" id="lightbox-img" src="" alt="" />
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
 </div>
 
 </body>

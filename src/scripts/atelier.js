@@ -53,6 +53,30 @@ export function initLightbox() {
             closeLightbox();
         }
     });
+
+// Dans initLightbox()
+    galleryImages.forEach(img => {
+        img.addEventListener('click', () => {
+            const src = img.getAttribute('src');
+            const credit = img.getAttribute('data-credit'); // On récupère l'attribut
+
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightboxImg.setAttribute('src', src);
+
+            // On écrit le texte. Si "credit" existe, on met un petit copyright devant.
+            if (credit) {
+                lightboxCaption.innerText = `© ${credit}`;
+            } else {
+                lightboxCaption.innerText = "";
+            }
+
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'flex';
+            setTimeout(() => lightbox.classList.add('active'), 10);
+        });
+    });
 }
 
 // Dans ton fichier src/scripts/atelier.js

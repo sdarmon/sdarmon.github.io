@@ -291,6 +291,61 @@
 .card-basic {
     padding: 0 24px;
 }
+
+.photo-credit-card {
+    position: absolute !important;
+
+    /* On le remonte pour qu'il soit sur l'image (environ 30px au dessus du texte) */
+    top: 0px;
+    right: 0px; /* Aligné à droite du texte */
+
+    /* Style visuel */
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'Exo 2', sans-serif;
+    text-transform: none;
+    letter-spacing: 0px;
+    z-index: 10;
+    pointer-events: none; /* Pour que le clic passe à travers vers la carte */
+}
+.photo-credit-vertical {
+    position: absolute !important;
+    top: 0px;    /* Distance par rapport au haut de l'image */
+    right: 0px;   /* Distance par rapport au bord droit */
+    z-index: 20;  /* Doit être au-dessus de tout */
+
+    /* ROTATION VERTICALE */
+    transform: rotate(90deg);
+    transform-origin: right top; /* Point de pivot : en haut à droite */
+    white-space: nowrap;         /* Empêche le texte de revenir à la ligne */
+
+    /* STYLE VISUEL */
+    font-size: 7px;
+    color: rgba(255, 255, 255, 0.4); /* Très discret */
+    background: rgba(0, 0, 0, 0.1);
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+.photo-credit-vertical-index {
+    position: absolute !important;
+    top: 5px !important;
+    right: 0px !important;
+    writing-mode: vertical-rl !important; /* Écrit verticalement de haut en bas */
+    font-size: 7px !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    z-index: 10 !important; /* Passe au-dessus de tout */
+    pointer-events: none !important;
+    font-family: 'Exo 2', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
 .card-basic h3 { color: #fff; margin: 8px 0; font-size: 1.4rem; }
 .card-basic p { color: #a8a8a8; margin: 0; line-height: 1.4; }
 
@@ -471,46 +526,66 @@
     }
 }
 /* Style de la Lightbox (cachée par défaut) */
+/* Le fond de la lightbox */
 .lightbox {
-    display: none; /* Caché */
+    display: none;
     position: fixed;
-    z-index: 2000; /* Au-dessus de tout le reste */
+    z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Fond noir transparent */
+    background-color: rgba(0, 0, 0, 0.95);
+    /* On centre tout au milieu de l'écran */
     justify-content: center;
     align-items: center;
     cursor: zoom-out;
 }
 
-/* L'image à l'intérieur */
+/* Le conteneur qui limite la taille globale */
+.lightbox-container {
+    display: flex;
+    flex-direction: column; /* Image en haut, légende en bas */
+    align-items: flex-end;   /* Aligne la légende à droite */
+    max-width: 95vw;        /* 90% de la largeur de l'écran max */
+    max-height: 95vh;       /* 90% de la hauteur de l'écran max */
+}
+
+/* L'IMAGE : C'est elle qu'on doit brider */
 .lightbox-content {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
+    /* On force l'image à ne pas dépasser 80% de la hauteur de l'écran
+       pour laisser 10% de place à la légende en dessous */
+    max-height: 85vh;
+    max-width: 100%;
+    width: auto;      /* Garde le ratio de l'image */
+    height: auto;     /* Garde le ratio de l'image */
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
-/* Quand la lightbox est ouverte, on peut animer l'image */
-.lightbox.active .lightbox-content {
-    transform: scale(1);
+/* LA LÉGENDE (Maintenant dans le flux normal) */
+.lightbox-caption {
+    width: 100%;      /* Prend toute la largeur de l'image */
+    color: #ffffff;
+    font-size: 13px;
+    padding-top: 10px;
+    text-align: right; /* Aligne le texte à droite */
+    font-family: 'Exo 2', sans-serif;
+    opacity: 0.8;
+    /* On retire le position: absolute qui causait le bug */
 }
 
-/* Le bouton de fermeture (la croix) */
+/* La croix de fermeture */
 .close-lightbox {
     position: absolute;
     top: 20px;
-    right: 35px;
+    right: 30px;
     color: #fff;
     font-size: 40px;
-    font-weight: bold;
     cursor: pointer;
+    z-index: 2100;
 }
-
 /* On change le curseur sur les images de la galerie pour montrer qu'elles sont cliquables */
 .gallery-grid img {
     width: 100%;
@@ -819,6 +894,24 @@
 .box-icon {
     font-size: 1.5rem;
     margin-bottom: 0; /* On annule l'ancienne marge du bas si elle existe */
+}
+
+/* credit photo */
+.image-container {
+    position: relative;
+}
+
+.photo-credit {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2px 6px;
+    border-radius: 4px;
+    pointer-events: none; /* L'élément ne gêne pas le clic */
+    font-family: 'Exo 2', sans-serif;
 }
 
 </style>
