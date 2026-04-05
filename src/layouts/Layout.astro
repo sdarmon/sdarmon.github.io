@@ -15,11 +15,18 @@ import '@fontsource/exo-2/700.css';
 <html lang="fr">
 <head>
 	<meta charset="UTF-8" />
-	<meta name="description" content="Astro description" />
 	<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/jpg+xml" href="/favicon.svg" />
+	<link rel="icon" type="image/jpg+xml" href="/assets/profil%20(40%20x%2040%20px).svg" />
 	<meta name="generator" content={Astro.generator} />
-	<title>{title}</title>
+
+	<!-- 1. Le Titre SEO (environ 60 caractères) -->
+	<title>{title} | Sasha Darmon - Médiation Scientifique & Bio-informatique</title>
+
+	<!-- 2. La Description SEO (environ 155 caractères) -->
+	<!-- C'est ce qui s'affiche en noir sous le lien bleu dans Google -->
+	<meta name="description" content="Doctorant en bio-informatique (LBBE Lyon), je conçois et anime des ateliers de vulgarisation scientifique, des expositions et des conférences." />
+
+	<!-- 3. Indiquer à Google que ton site est en français -->
 </head>
 <body>
 <slot />
