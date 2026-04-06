@@ -1,0 +1,75 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
+import "../layouts/index.css";
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<Header title="Mentions Légales | Sasha Darmon" />
+<body>
+<div class="content">
+    <Sidebar selectedItem="" />
+    <nav class="main">
+        <div class="container">
+            <main class="fold-content-container">
+
+                <a href="/" class="button w-button" style="margin-bottom: 32px; background-color: #353535; border-color: #353535;">← Retour</a>
+
+                <div class="fold-content legal-content">
+                    <h1>Mentions Légales</h1>
+
+                    <section style="margin-top: 40px;">
+                        <div class="mini-label-white gray-color" style="color: #95ec38;">Édition du site</div>
+                        <p>Le présent site est édité par : <strong>Sasha Darmon</strong><br />
+                            Email : contact@sashadarmon.fr</p>
+                    </section>
+
+                    <section style="margin-top: 30px;">
+                        <div class="mini-label-white gray-color" style="color: #95ec38;">Hébergement</div>
+                        <p>Le site est hébergé par :<br />
+                            <strong>GitHub Inc.</strong><br />
+                            88 Colin P Kelly Jr St<br />
+                            San Francisco, CA 94107, États-Unis<br />
+                            Site web : <a href="https://pages.github.com" target="_blank" style="color: #3898ec;">https://pages.github.com</a></p>
+                    </section>
+
+                    <section style="margin-top: 30px;">
+                        <div class="mini-label-white gray-color" style="color: #95ec38;">Propriété intellectuelle</div>
+                        <p>
+                            Sauf mention contraire, tous les contenus (textes, images, graphismes, logos, icônes) sont la
+                            propriété exclusive de Sasha Darmon. Toute reproduction, représentation, modification ou
+                            publication, même partielle, est interdite sans autorisation écrite préalable.
+                        </p>
+                        <p>Les photos créditées à des tiers appartiennent à leurs auteurs respectifs.</p>
+                    </section>
+
+                    <section style="margin-top: 30px;">
+                        <div class="mini-label-white" style="color: #95ec38;">Données personnelles & Cookies</div>
+                        <p>
+                            Ce site est purement informatif. Il n'utilise aucun cookie de traçage publicitaire et ne
+                            collecte aucune donnée personnelle à l'exception des informations envoyées volontairement
+                            par l'utilisateur via le formulaire de contact (Formspree).
+                        </p>
+                    </section>
+                </div>
+            </main>
+            <Footer />
+        </div>
+    </nav>
+</div>
+
+<style>
+    .legal-content p {
+        color: #a8a8a8;
+        line-height: 1.6;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    .legal-content strong {
+        color: #fff;
+    }
+</style>
+</body>
+</html>

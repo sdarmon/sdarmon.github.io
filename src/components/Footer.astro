@@ -3,27 +3,45 @@
 ---
 <footer class="site-footer">
     <div class="footer-line"></div>
-    <p>© {new Date().getFullYear()} Sasha Darmon. Sauf mention contraire, les images de ce site sont ma propriété.</p>
+    <p>
+        © {new Date().getFullYear()} Sasha Darmon <span class="separator">|</span>
+        <a href="/mentions-legales" class="legal-link">Mentions légales</a>
+    </p>
 </footer>
 
 <style>
     .site-footer {
         display: block;
-        margin-top: 0px;
-        padding-bottom: 0px;
+        margin-top: 80px;
+        padding-bottom: 40px;
         text-align: center;
         width: 100%;
     }
     .footer-line {
-        width: 50px;
+        width: 50px; /* On réduit un peu la ligne pour la discrétion */
         height: 1px;
         background-color: #353535;
-        margin: 0 auto 10px;
+        margin: 0 auto 20px;
     }
     .site-footer p {
         font-size: 11px;
-        color: #888;
+        color: #666; /* Gris discret */
         font-family: 'Exo 2', sans-serif;
         letter-spacing: 0.5px;
+        line-height: 1.5;
+    }
+    .separator {
+        margin: 0 8px;
+        color: #333; /* Encore plus discret que le texte */
+    }
+    .legal-link {
+        color: #666; /* Même couleur que le texte pour s'incruster */
+        text-decoration: none;
+        transition: color 0.3s ease;
+        border-bottom: 1px solid transparent;
+    }
+    .legal-link:hover {
+        color: #95ec38; /* Ne devient visible (vert) qu'au survol */
+        border-bottom: 1px solid #95ec38;
     }
 </style>

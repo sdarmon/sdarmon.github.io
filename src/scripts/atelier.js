@@ -82,22 +82,57 @@ export function initLightbox() {
 // Dans ton fichier src/scripts/atelier.js
 
 export function initQuizIA() {
-    const btn = document.getElementById('reveal-btn');
-    const text = document.getElementById('solution-text');
-    const realCatCard = document.querySelector('.real-cat');
+    const quizContainer = document.querySelector('.ia-quiz-container');
+    const items = document.querySelectorAll('.ia-item');
+    const solutionText = document.getElementById('solution-text');
+    const revealBtn = document.getElementById('reveal-btn');
 
-    if (btn && text) {
-        btn.addEventListener('click', () => {
-            // Affiche le texte
-            text.classList.toggle('show');
+    if (!quizContainer || items.length === 0) return;
 
-            // Encadre la vraie Hécate en vert
-            if (realCatCard) {
-                realCatCard.classList.toggle('revealed-real');
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            // Si on a déjà répondu, on ne fait rien
+            if (quizContainer.classList.contains('answered')) return;
+
+            // On marque le quiz comme "répondu"
+            quizContainer.classList.add('answered');
+
+            const isReal = item.classList.contains('real-cat');
+
+            if (isReal) {
+                // GAGNÉ
+                item.classList.add('revealed-correct');
+            } else {
+                // PERDU
+                item.classList.add('revealed-wrong');
+                // On montre quand même où était la bonne réponse
+                document.querySelector('.real-cat').classList.add('revealed-correct');
             }
 
-            // Change le texte du bouton
-            btn.textContent = text.classList.contains('show') ? 'Cacher la solution' : 'Voir la solution';
+            // On affiche le texte de solution
+            solutionText.classList.add('show');
+
+            // On change le texte du bouton pour proposer de recommencer
+            if (revealBtn) revealBtn.textContent = "Recommencer le test";
+        });
+    });
+
+    // Gestion du bouton de solution / Reset
+    if (revealBtn) {
+        revealBtn.addEventListener('click', () => {
+            if (quizContainer.classList.contains('answered')) {
+                // RESET : On remet tout à zéro pour rejouer
+                quizContainer.classList.remove('answered');
+                items.forEach(i => i.classList.remove('revealed-correct', 'revealed-wrong'));
+                solutionText.classList.remove('show');
+                revealBtn.textContent = "Voir la solution";
+            } else {
+                // REVELATION MANUELLE : Si l'utilisateur clique sur le bouton sans avoir choisi d'image
+                quizContainer.classList.add('answered');
+                document.querySelector('.real-cat').classList.add('revealed-correct');
+                solutionText.classList.add('show');
+                revealBtn.textContent = "Recommencer le test";
+            }
         });
     }
 }

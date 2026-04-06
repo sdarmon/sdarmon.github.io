@@ -329,23 +329,51 @@ p {
 .niv-image {
   width: 48px;
   height: 48px;
-  border: 1px solid #141717;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+  box-shadow 0.4s ease;
+  border: 1px solid transparent;
   border-radius: 100px;
   margin-right: 12px;
 }
 
+.niv-image:hover {
+  transform: scale(1.1) rotate(3deg); /* Zoom ludique et très légère rotation */
+  border-color: rgba(149, 236, 56, 0.3); /* S'encadre en vert */
+  box-shadow: 0 0 15px rgba(149, 236, 56, 0.3);
+}
 .main {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(20, 23, 23, 0.64), rgba(20, 23, 23, 0.64)), url('./grid-top-right.svg'), linear-gradient(rgba(20, 23, 23, 0.24), rgba(20, 23, 23, 0.24));
-  background-position: 0 0, 0 0, 0 0;
-  background-size: auto, auto 1130px, auto;
-  background-repeat: no-repeat;
-  /* FORCE L'IMAGE À ZOOMER POUR COUVRIR TOUT L'ÉCRAN */
-  background-size: cover !important;
-  /* CENTRE LA GRILLE POUR QUE LE ZOOM SOIT HARMONIEUX */
-  background-position: center top;
+
+  /*
+   * L'ORDRE DES CALQUES EST CRUCIAL : Le premier cité est "au-dessus" des autres.
+   * 1. Dégradé "Effaceur" : Transparent en haut -> Noir opaque en bas.
+   * 2. Le voile gris d'ambiance (facultatif si tu veux que la grille claque plus).
+   * 3. La grille SVG.
+   */
+  background-image:
+    /* Le Glow Vert (Haut Droite) : J'ai forcé l'opacité à 0.08 pour qu'il claque plus */
+          radial-gradient(circle at 95% 10%, rgba(149, 236, 56, 0.06) 0%, rgba(20, 23, 23, 0) 100%),
+
+            /* Le Glow Violet/Bleu (Bas Gauche) : J'ai remonté l'opacité à 0.06 pour qu'il perce le noir */
+          radial-gradient(circle at 10% 95%, rgba(234, 58, 211, 0.04) 0%, rgba(20, 23, 23, 0) 100%),
+    /* L'effaceur Bas */
+          linear-gradient(to bottom, rgba(20, 23, 23, 0) 20%, #141717 100%),
+            /* L'effaceur Gauche */
+          linear-gradient(to right, #141717 30%, rgba(20, 23, 23, 0) 100%),
+
+         /* Le voile d'assombrissement global */
+          linear-gradient(rgba(20, 23, 23, 0.64), rgba(20, 23, 23, 0.64)),
+
+            /* La grille SVG */
+          url('./grid-top-right.svg');
+
+  /* On s'assure d'avoir 5 tailles et 5 positions pour les 5 calques */
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, max(100%, 2000px) auto !important;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, center top !important;
+
   background-attachment: fixed;
+
   flex-direction: column;
   align-items: center;
   padding: 46px 48px 82px;

@@ -13,13 +13,17 @@
     margin-bottom: 40px;
 }
 
+/* On garde ton survol vert, mais on l'illumine un peu plus */
+
 .mosaic-card {
     position: relative;
     width: 100% !important;
     aspect-ratio: 1 / 1;
     box-sizing: border-box !important;
-    background-color: #2b2b2b;
-    border: 1px solid rgb(136 136 136);
+    background-color: rgba(26, 28, 35, 0.6) !important; /* On remplace la couleur unie par du semi-transparent */
+    backdrop-filter: blur(12px); /* LE SECRET : Floute ce qui est derrière la carte */
+    -webkit-backdrop-filter: blur(12px); /* Pour Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Bordure très fine et lumineuse */
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none !important;
@@ -29,8 +33,8 @@
 }
 
 .mosaic-card:hover {
-    transform: translateY(-5px);
-    border-color: #95ec38;
+    border-color: rgba(149, 236, 56, 0.8) !important;
+    box-shadow: 0 10px 30px rgba(149, 236, 56, 0.1); /* Petit halo vert sous la carte */
 }
 
 .mosaic-img {
@@ -159,10 +163,20 @@
     align-items: center;
     background-color: #68aa24;
     border-color: #68aa24;
+    animation: pulse-soft 3s infinite; /* Tourne en boucle lente */
 }
+
+@keyframes pulse-soft {
+    0% { box-shadow: 0 0 0 0 rgba(149, 236, 56, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(149, 236, 56, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(149, 236, 56, 0); }
+}
+
 .contact-btn:hover {
     background-color: #4a7519;
     border-color: #4a7519;
+    animation: none;
+    transform: translateY(-2px);
 }
 
 
@@ -212,9 +226,12 @@
     min-width: 80%; /* La carte prend 80% de l'écran, laissant 20% pour l'aperçu */
     max-width: 400px;
     scroll-snap-align: center;
-    background-color: #1c1c1c;
-    border: 1px solid #353535;
+    background-color: rgba(26, 28, 35, 0.6) !important; /* On remplace la couleur unie par du semi-transparent */
+    backdrop-filter: blur(12px); /* LE SECRET : Floute ce qui est derrière la carte */
+    -webkit-backdrop-filter: blur(12px); /* Pour Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Bordure très fine et lumineuse */
     border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(149, 236, 56, 0.1); /* Petit halo vert sous la carte */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -616,12 +633,12 @@
 }
 
 .ia-quiz-container {
-    max-width: 450px;
+    max-width: 1000px;
     margin: 10px auto;
     text-align: center;
     background: rgba(255, 255, 255, 0.05);
     padding: 10px;
-    width: 70%;
+    width: 85%;
     border-radius: 10px;
     border: 1px solid #353535;
     margin-top: 10px;
@@ -638,7 +655,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;                 /* Espace entre les deux photos */
-    max-width: 400px;          /* Optionnel : évite que les photos soient trop géantes sur grand écran */
+    max-width: 1000px;          /* Optionnel : évite que les photos soient trop géantes sur grand écran */
     margin: 0 auto;            /* Centre la grille horizontalement */
 }
 
@@ -654,11 +671,13 @@
 
 .ia-item:hover {
     transform: scale(1.02); /* Petit zoom très léger au survol */
+    border-color: rgba(149, 236, 56, 0.8) !important;
+    box-shadow: 0 10px 30px rgba(149, 236, 56, 0.1); /* Petit halo vert sous la carte */
 }
 .ia-item img {
     width: 100%;
     height: auto;              /* Laisse l'image garder ses proportions naturelles */
-    max-height: 200px;         /* Limite la hauteur pour ne pas trop scroller */
+    max-height: 250px;         /* Limite la hauteur pour ne pas trop scroller */
     object-fit: cover;         /* Recadre proprement si l'image est trop grande */
     border-radius: 12px;
 }
@@ -682,7 +701,31 @@
     border-color: #95ec38;
     box-shadow: 0 0 15px rgba(149, 236, 56, 0.4);
 }
+/* --- NOUVEAUX STYLES POUR LE QUIZ INTERACTIF --- */
 
+/* Cas : Réponse correcte sélectionnée */
+.ia-item.revealed-correct {
+    border-color: #95ec38 !important;
+    box-shadow: 0 0 20px rgba(149, 236, 56, 0.6);
+}
+
+/* Cas : Mauvaise réponse sélectionnée */
+.ia-item.revealed-wrong {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+}
+
+/* On désactive le survol et le clic une fois qu'on a répondu */
+.ia-quiz-container.answered .ia-item {
+    pointer-events: none;
+    cursor: default;
+    transform: none !important;
+}
+
+/* Optionnel : On assombrit légèrement les cartes non sélectionnées pour faire ressortir la réponse */
+.ia-quiz-container.answered .ia-item:not(.revealed-correct):not(.revealed-wrong) {
+    opacity: 0.3;
+}
 /* Bouton et texte de solution */
 .solution-wrapper {
     margin-top: 15px;
@@ -808,8 +851,15 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    transition: all 0.3s ease;
+    cursor: default;
 }
-
+.skills-tags span:hover {
+    background-color: rgba(149, 236, 56, 0.15);
+    color: #95ec38;
+    border-color: #95ec38;
+    transform: translateY(-2px);
+}
 .skills-tags span {
     background-color: #2b2b2b;
     color: #fff;
