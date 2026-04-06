@@ -13,8 +13,7 @@ import '@fontsource/exo-2/700.css';
 </head>
 <body>
 
-<a href={`${import.meta.env.BASE_URL}`} class="back-link">← Retour au site</a>
-
+<a href={import.meta.env.BASE_URL} id="back-button" class="back-link">← Retour</a>
 <div class="timer-container">
     <div class="mt180-label">Ma Thèse en</div>
     <div id="number" class="timer-number">180</div>
@@ -207,6 +206,14 @@ import '@fontsource/exo-2/700.css';
             updateDisplay();
         };
     }
+    document.getElementById('back-button').addEventListener('click', (e) => {
+    // Si l'utilisateur a une page précédente sur ton site
+    if (document.referrer && document.referrer.includes(window.location.hostname)) {
+    e.preventDefault(); // On empêche le lien vers l'accueil
+    history.back();     // On retourne à la page précédente
+}
+    // Sinon, on laisse le lien normal (href) s'exécuter vers l'accueil
+});
 </script>
 </body>
 </html>

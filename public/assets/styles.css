@@ -352,25 +352,41 @@ p {
    * 3. La grille SVG.
    */
   background-image:
-    /* Le Glow Vert (Haut Droite) : J'ai forcé l'opacité à 0.08 pour qu'il claque plus */
-          radial-gradient(circle at 95% 10%, rgba(149, 236, 56, 0.06) 0%, rgba(20, 23, 23, 0) 100%),
 
-            /* Le Glow Violet/Bleu (Bas Gauche) : J'ai remonté l'opacité à 0.06 pour qu'il perce le noir */
-          radial-gradient(circle at 10% 95%, rgba(234, 58, 211, 0.04) 0%, rgba(20, 23, 23, 0) 100%),
     /* L'effaceur Bas */
           linear-gradient(to bottom, rgba(20, 23, 23, 0) 20%, #141717 100%),
             /* L'effaceur Gauche */
           linear-gradient(to right, #141717 30%, rgba(20, 23, 23, 0) 100%),
 
-         /* Le voile d'assombrissement global */
-          linear-gradient(rgba(20, 23, 23, 0.64), rgba(20, 23, 23, 0.64)),
+              /* Le Glow Violet/Bleu (Bas Gauche) : J'ai remonté l'opacité à 0.06 pour qu'il perce le noir */
+            radial-gradient(circle at 10% 95%,
+            rgba(234, 58, 211, 0.14) 0%,
+            rgba(20, 23, 23, 0) 250%),
+
+    /* Le Glow Vert (Haut Droite) : J'ai forcé l'opacité à 0.08 pour qu'il claque plus */
+          radial-gradient(
+                  circle at 95% 10%,
+                  rgba(149, 236, 56, 0.15) 0%,
+                  rgba(20, 23, 23, 0) 250%      /* On réduit à 100% pour éviter les traînes invisibles */
+          ),
+
+
+            /* Le Glow Vert (Haut Droite) : J'ai forcé l'opacité à 0.08 pour qu'il claque plus */
+          radial-gradient(
+                  circle at 100% 0%,
+                  rgba(149, 236, 56, 0.05) 0%,
+                  rgba(20, 23, 23, 0) 10%      /* On réduit à 100% pour éviter les traînes invisibles */
+          ),
+
+            /* Le voile d'assombrissement global */
+          linear-gradient(rgba(20, 23, 23, 0.8), rgba(20, 23, 23, 0.64)),
 
             /* La grille SVG */
           url('./grid-top-right.svg');
 
   /* On s'assure d'avoir 5 tailles et 5 positions pour les 5 calques */
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, max(100%, 2000px) auto !important;
-  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, center top !important;
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, max(100%, 2000px) auto !important;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, center top !important;
 
   background-attachment: fixed;
 
@@ -380,6 +396,7 @@ p {
   display: flex;
   overflow: auto;
 }
+
 
 .container {
   width: 100%;
@@ -650,6 +667,21 @@ p {
   .navbar-icon-button {
     padding: 12px;
     transition: all 0.24s;
+  }
+
+  .w-nav-menu {
+    background-color: #141717 !important;
+  }
+
+  /* Si le menu est en mode "dropdown" (is-visible) */
+  .w-nav[data-collapse='medium'] .w-nav-menu.is-visible {
+    background-color: #141717 !important;
+  }
+
+  /* On s'assure que tout le corps reste noir */
+   .sidebar {
+    background-color: #141717 !important;
+    background-image: none !important;
   }
 }
 
