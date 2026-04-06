@@ -16,30 +16,43 @@ import { ClientRouter } from 'astro:transitions';
 <html lang="fr">
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="color-scheme" content="dark">
-	<link rel="icon" type="image/jpg+xml" href="/assets/profil%20(40%20x%2040%20px).svg" />
 	<meta name="generator" content={Astro.generator} />
-	<meta property="og:title" content="Sasha Darmon | Médiation & Recherche" />
-	<meta property="og:description" content="Docteur en Bio-informatique et médiateur scientifique. Découvrez mes ateliers et conférences." />
-	<meta property="og:image" content="https://sashadarmon.fr/assets/banner.jpg" />
-	<meta property="og:url" content="https://sashadarmon.fr" />
 
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content="https://sashadarmon.fr/" />
-	<meta property="twitter:title" content="Sasha Darmon | Médiation & Recherche" />
-	<meta property="twitter:description" content="Découvrez mes ateliers, mes publications et mon parcours." />
-	<meta property="twitter:image" content="https://sashadarmon.fr/assets/banner.jpg" />
-
-	<!-- 1. Le Titre SEO (environ 60 caractères) -->
+	<!-- SEO DE BASE -->
 	<title>{title} | Sasha Darmon - Médiation Scientifique & Bio-informatique</title>
-
-	<!-- 2. La Description SEO (environ 155 caractères) -->
-	<!-- C'est ce qui s'affiche en noir sous le lien bleu dans Google -->
 	<meta name="description" content="Doctorant en bio-informatique (LBBE Lyon), je conçois et anime des ateliers de vulgarisation scientifique, des expositions et des conférences." />
 
-	<!-- 3. Indiquer à Google que ton site est en français -->
+	<!-- OPEN GRAPH / LINKEDIN / FACEBOOK -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://sashadarmon.fr/" />
+	<meta property="og:title" content="Sasha Darmon | Médiation & Recherche" />
+	<meta property="og:description" content="Doctorant en Bio-informatique et médiateur scientifique. Découvrez mes ateliers et conférences." />
+	<meta property="og:image" content="https://sashadarmon.fr/assets/banner.jpg" />
+
+	<!-- TWITTER -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Sasha Darmon | Médiation & Recherche" />
+	<meta name="twitter:description" content="Découvrez mes ateliers, mes publications et mon parcours." />
+	<meta name="twitter:image" content="https://sashadarmon.fr/assets/banner.jpg" />
+
+	<!-- FAVICONS -->
+	<link rel="icon" type="image/svg+xml" href="/assets/profil-40x40.svg" />
+	<link rel="apple-touch-icon" href="/assets/profil-40x40.svg" />
+
+	<!-- TRANSITIONS DE PAGE -->
 	<ClientRouter />
+
+	<!-- SCRIPTS & STYLES -->
+	<link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+	<script is:inline>
+		!(function (o, c) {
+			var n = c.documentElement,
+				t = " w-mod-";
+			(n.className += t + "js"), ("ontouchstart" in o || (o.DocumentTouch && c instanceof DocumentTouch)) && (n.className += t + "touch");
+		})(window, document);
+	</script>
 </head>
 <body>
 <slot />
