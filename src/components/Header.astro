@@ -1,49 +1,62 @@
 ---
+import { ui } from '@/i18n/ui';
+import { ClientRouter } from 'astro:transitions';
+import '@fontsource/exo-2/400.css';
+import '@fontsource/exo-2/700.css';
+
 interface HeaderProps {
   title: string;
 }
 const { title } = Astro.props as HeaderProps;
 
-import '@fontsource/exo-2/400.css';
-import '@fontsource/exo-2/700.css';
-import { ClientRouter } from 'astro:transitions';
+// Logique de langue
+const pathname = Astro.url.pathname;
+const lang = pathname.startsWith('/en') ? 'en' : 'fr';
+const t = ui[lang];
+
+// Construction du titre final
+const finalTitle = `${title} | Sasha Darmon - ${t['seo.suffix']}`;
 ---
 
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="UTF-8" />
-  <title>{title} | Sasha Darmon - Médiation Scientifique & Bio-informatique</title>
-  <meta name="description" content="Doctorant en bio-informatique (LBBE Lyon), je conçois et anime des ateliers de vulgarisation scientifique, des expositions et des conférences." />
-  <meta name="author" content="Sasha Darmon" />
-
-  <!-- OPEN GRAPH / LINKEDIN / FACEBOOK -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sashadarmon.fr/" />
-  <meta name="title" property="og:title" content="Sasha Darmon | Médiation & Recherche" />
-  <meta name="description" property="og:description" content="Doctorant en Bio-informatique et médiateur scientifique. Découvrez mes ateliers et conférences." />
-  <meta name="image" property="og:image" content="https://sashadarmon.fr/assets/banner.jpg" />
-
-
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark">
   <meta name="generator" content={Astro.generator} />
+  <meta name="author" content="Sasha Darmon" />
+
+  <!-- SEO CLASSIQUE -->
+  <title>{finalTitle}</title>
+  <meta name="description" content={t['seo.description']} />
+
+  <!-- OPEN GRAPH / LINKEDIN / FACEBOOK -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:title" content={finalTitle} />
+  <meta property="og:description" content={t['seo.ogDescription']} />
+  <meta property="og:image" content="https://sashadarmon.fr/assets/banner.jpg" />
+  <meta property="og:site_name" content="Sasha Darmon" />
 
   <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sasha Darmon | Médiation & Recherche" />
-  <meta name="twitter:description" content="Découvrez mes ateliers, mes publications et mon parcours." />
+  <meta name="twitter:title" content={finalTitle} />
+  <meta name="twitter:description" content={t['seo.ogDescription']} />
   <meta name="twitter:image" content="https://sashadarmon.fr/assets/banner.jpg" />
 
   <!-- FAVICONS -->
   <link rel="icon" type="image/svg+xml" href="/assets/profil-40x40.svg" />
   <link rel="apple-touch-icon" href="/assets/profil-40x40.svg" />
+
+  <!-- MULTILINGUE -->
   <link rel="alternate" hreflang="fr" href="https://sashadarmon.fr/" />
   <link rel="alternate" hreflang="en" href="https://sashadarmon.fr/en/" />
+
   <!-- TRANSITIONS DE PAGE -->
   <ClientRouter />
 
   <!-- SCRIPTS & STYLES -->
   <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+
   <script is:inline>
     !(function (o, c) {
       var n = c.documentElement,
