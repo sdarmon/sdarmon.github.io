@@ -14,48 +14,6 @@ import { ClientRouter } from 'astro:transitions';
 
 <!doctype html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8" />
-	<title>{title} | Sasha Darmon - Médiation Scientifique & Bio-informatique</title>
-	<meta name="description" content="Doctorant en bio-informatique (LBBE Lyon), je conçois et anime des ateliers de vulgarisation scientifique, des expositions et des conférences." />
-	
-	<!-- OPEN GRAPH / LINKEDIN / FACEBOOK -->
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://sashadarmon.fr/" />
-	<meta name="title" property="og:title" content="Sasha Darmon | Médiation & Recherche" />
-	<meta name="description" property="og:description" content="Doctorant en Bio-informatique et médiateur scientifique. Découvrez mes ateliers et conférences." />
-	<meta name="image" property="og:image" content="https://sashadarmon.fr/assets/banner.jpg" />
-
-
-
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="color-scheme" content="dark">
-	<meta name="generator" content={Astro.generator} />
-
-
-	<!-- TWITTER -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Sasha Darmon | Médiation & Recherche" />
-	<meta name="twitter:description" content="Découvrez mes ateliers, mes publications et mon parcours." />
-	<meta name="twitter:image" content="https://sashadarmon.fr/assets/banner.jpg" />
-
-	<!-- FAVICONS -->
-	<link rel="icon" type="image/svg+xml" href="/assets/profil-40x40.svg" />
-	<link rel="apple-touch-icon" href="/assets/profil-40x40.svg" />
-
-	<!-- TRANSITIONS DE PAGE -->
-	<ClientRouter />
-
-	<!-- SCRIPTS & STYLES -->
-	<link href="/assets/styles.css" rel="stylesheet" type="text/css" />
-	<script is:inline>
-		!(function (o, c) {
-			var n = c.documentElement,
-				t = " w-mod-";
-			(n.className += t + "js"), ("ontouchstart" in o || (o.DocumentTouch && c instanceof DocumentTouch)) && (n.className += t + "touch");
-		})(window, document);
-	</script>
-</head>
 <body>
 <slot />
 </body>
