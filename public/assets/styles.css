@@ -747,3 +747,43 @@ p {
     height: 64px;
   }
 }
+
+@media screen and (max-width: 991px) {
+  /* 1. On s'assure que le conteneur est bien en ligne et aligné */
+  .nav-content {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 50px; /* Force une hauteur propre pour la barre mobile */
+  }
+
+  /* 2. On réduit la taille du switcher pour qu'il soit discret à côté du burger */
+  .lang-switcher {
+    margin-top: 0 !important; /* Annule le margin-top auto du desktop */
+    margin-left: 20px;
+    width: auto !important;
+    order: 2; /* Positionne le switcher au milieu */
+    font-size: 13px !important;
+  }
+
+  /* 3. On force le bouton Burger à rester tout à droite sans être écrasé */
+  .navbar-icon-button {
+    order: 3; /* Le met à la fin */
+    margin-left: 10px; /* Ajustement pour coller au bord */
+    margin-top: -10px;
+    flex-shrink: 0; /* Empêche l'icône de s'écraser */
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 4. On s'assure que le nom et la photo restent à gauche */
+  .w-nav-brand {
+    order: 1;
+    flex-shrink: 1;
+    min-width: 0; /* Permet au texte de se couper proprement si besoin */
+  }
+}
