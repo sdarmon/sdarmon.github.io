@@ -28,6 +28,7 @@ const ogImage = lang === 'en'
   <meta name="color-scheme" content="dark">
   <meta name="generator" content={Astro.generator} />
   <meta name="author" content="Sasha Darmon" />
+  <meta name="thumbnail" content="https://sashadarmon.fr/photo/Bartok_Vincent_Noclin.jpg" />
 
   <!-- SEO CLASSIQUE -->
   <title>{finalTitle}</title>
@@ -67,5 +68,20 @@ const ogImage = lang === 'en'
           t = " w-mod-";
       (n.className += t + "js"), ("ontouchstart" in o || (o.DocumentTouch && c instanceof DocumentTouch)) && (n.className += t + "touch");
     })(window, document);
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sasha Darmon",
+      "url": "https://sashadarmon.fr",
+      "image": "https://sashadarmon.fr/photo/Bartok_Vincent_Noclin.jpg",
+      "description": "Doctorant en bio-informatique et médiateur scientifique.",
+      "jobTitle": "Doctorant",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "LBBE - Université de Lyon"
+      }
+    }
   </script>
 </head>
